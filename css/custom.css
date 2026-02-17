@@ -22,3 +22,8 @@
 #body-wrap {
     background-color: #f0f2f5 !important; /* 可以换成你喜欢的浅灰色或其他颜色 */
 }
+
+/* 完全隐藏底栏 */
+#footer {
+  display: none !important;
+}
