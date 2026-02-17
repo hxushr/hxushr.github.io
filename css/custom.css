@@ -8,16 +8,16 @@
 /* ========== 顶栏字体调整 ========== */
 /* 顶栏大标题（站点名称） */
 .site-name {
-  font-size: 50px !important;
-  font-weight: 500 !important; /* 加粗标题，更醒目 */
-  line-height: 1.2 !important; /* 行高适配，避免文字溢出 */
+  font-size: 30px !important;
+  font-weight: 400 !important; /* 加粗标题，更醒目 */
+  line-height: 1.2 !important; /*行高适配，避免文字溢出 */
 }
 
-/* 导航栏菜单文字 */
+导航栏菜单文字
 #nav-menu a {
-  font-size: 40px !important;
-  padding: 0 12px !important; /* 增加菜单间距，避免挤在一起 */
-  font-weight: 500 !important;
+  /* font-size: 25px !important; */
+  /* padding: 0 12px !important; 增加菜单间距，避免挤在一起 */
+  /* font-weight: 500 !important; */
 }
 
 /* 适配小屏幕（避免手机端字体过大） */
@@ -82,4 +82,15 @@
 }
 ::-webkit-scrollbar-track {
   background-color: #f0f2f5 !important;
+}
+
+/* 限制顶栏 Banner 的最大宽度并居中 */
+#page-header {
+  background-color: rgba(255, 255, 255, 0) !important; /* 半透明白色 */
+  max-height: 250px !important; /* 调整为你想要的高度，比如 200px 或 400px */
+}
+
+/* 可选：让顶栏内部的文字也居中对齐 */
+#page-header .site-info {
+  text-align: center !important;
 }
