@@ -1,0 +1,24 @@
+/* 调整顶栏大标题（hx's blog）的字体大小 */
+.site-name {
+    font-size: 50px !important; /* 可以根据需要调整数值，比如 32px */
+}
+
+/* 调整导航栏菜单（首页、分类等）的字体大小 */
+#nav-menu a {
+    font-size: 25px !important; /* 可以根据需要调整数值，比如 18px */
+}
+
+/* 调整文章卡片的背景为半透明白色 */
+.recent-post-item,
+.card-widget {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    /* rgba 最后一个参数 0.8 代表透明度，范围是 0（完全透明）到 1（完全不透明） */
+    /* 你可以改成 0.7、0.9 等，找到你喜欢的效果 */
+    border-radius: 12px !important; /* 可选：让卡片边角更圆润 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 可选：添加轻微阴影，增加层次感 */
+}
+
+/* 调整页面整体背景，让半透明效果更明显 */
+#body-wrap {
+    background-color: #f0f2f5 !important; /* 可以换成你喜欢的浅灰色或其他颜色 */
+}
