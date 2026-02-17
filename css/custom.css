@@ -1,29 +1,85 @@
-/* 调整顶栏大标题（hx's blog）的字体大小 */
+/* ========== 全局样式重置（确保自定义样式优先级最高） ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========== 顶栏字体调整 ========== */
+/* 顶栏大标题（站点名称） */
 .site-name {
-    font-size: 50px !important; /* 可以根据需要调整数值，比如 32px */
+  font-size: 50px !important;
+  font-weight: 500 !important; /* 加粗标题，更醒目 */
+  line-height: 1.2 !important; /* 行高适配，避免文字溢出 */
 }
 
-/* 调整导航栏菜单（首页、分类等）的字体大小 */
+/* 导航栏菜单文字 */
 #nav-menu a {
-    font-size: 25px !important; /* 可以根据需要调整数值，比如 18px */
+  font-size: 40px !important;
+  padding: 0 12px !important; /* 增加菜单间距，避免挤在一起 */
+  font-weight: 500 !important;
 }
 
-/* 调整文章卡片的背景为半透明白色 */
+/* 适配小屏幕（避免手机端字体过大） */
+@media (max-width: 768px) {
+  .site-name {
+    font-size: 32px !important;
+  }
+  #nav-menu a {
+    font-size: 18px !important;
+  }
+}
+
+/* ========== 背景与卡片样式 ========== */
+/* 页面整体背景色（替换成你喜欢的颜色即可） */
+#body-wrap {
+  background-color: #f0f2f5 !important; /* 浅灰色背景，柔和不刺眼 */
+  /* 可选：换成背景图片（取消注释即可，替换图片路径） */
+  background: url(/img/bg.jpg) no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+/* 文章卡片 + 侧边栏卡片样式 */
 .recent-post-item,
 .card-widget {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-    /* rgba 最后一个参数 0.8 代表透明度，范围是 0（完全透明）到 1（完全不透明） */
-    /* 你可以改成 0.7、0.9 等，找到你喜欢的效果 */
-    border-radius: 12px !important; /* 可选：让卡片边角更圆润 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 可选：添加轻微阴影，增加层次感 */
+  background-color: rgba(255, 255, 255, 0.85) !important; /* 半透明白色 */
+  border-radius: 12px !important; /* 圆润边角 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 轻微阴影增加层次感 */
+  border: none !important; /* 去掉默认边框，更简洁 */
+  margin-bottom: 20px !important; /* 卡片间距 */
 }
 
-/* 调整页面整体背景，让半透明效果更明显 */
-#body-wrap {
-    background-color: #f0f2f5 !important; /* 可以换成你喜欢的浅灰色或其他颜色 */
+/* 卡片 hover 效果（可选，增加交互感） */
+.recent-post-item:hover,
+.card-widget:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-2px) !important;
+  transition: all 0.3s ease !important;
 }
 
-/* 完全隐藏底栏 */
+/* ========== 底栏彻底隐藏 ========== */
 #footer {
   display: none !important;
+  visibility: hidden !important; /* 双重保险，确保完全隐藏 */
+  height: 0 !important;
+  padding: 0 !important;
+}
+
+/* ========== 其他优化（可选） ========== */
+/* 去掉页面默认内边距，让背景铺满 */
+#web_bg {
+  background-color: transparent !important;
+}
+
+/* 滚动条美化（可选，和主题色匹配） */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #49B1F5 !important;
+  border-radius: 4px !important;
+}
+::-webkit-scrollbar-track {
+  background-color: #f0f2f5 !important;
 }
