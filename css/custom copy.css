@@ -95,127 +95,114 @@
   text-align: center !important;
 }
 
-/* ======================================
-   标签页面：词云风格 (修复版)
-   ====================================== */
 
-/* 1. 锁定标签容器 (同时覆盖多种可能的类名) */
-.tag-cloud-list,
-#tag-cloud, 
+/* ======================================
+   标签页面：词云风格
+   ====================================== */
+/* 更精准的标签词云样式 */
+/* 覆盖整个标签容器 */
+#tag-cloud,
 .page-tag #tag-cloud {
   text-align: center !important;
-  padding: 40px 10px !important;
+  padding: 30px !important;
 }
 
-/* 2. 核心样式：强制去掉“按钮”背景，改为“纯文字” */
-.tag-cloud-list a,
+/* 覆盖所有标签链接 */
 #tag-cloud a,
 .page-tag #tag-cloud a,
 .tag-cloud a {
   display: inline-block !important;
-  margin: 0 10px !important;
-  padding: 0 !important;             /* 去掉内边距 */
-  border-radius: 0 !important;       /* 去掉圆角 */
-  background-color: transparent !important; /* 关键：去掉背景色 */
-  box-shadow: none !important;       /* 去掉阴影 */
-  border: none !important;           /* 去掉边框 */
-  
-  /* 字体设置 */
+  margin: 10px 15px !important;
+  padding: 8px 18px !important;
+  border-radius: 28px !important;
+  color: #fff !important;
   font-weight: 500 !important;
   text-decoration: none !important;
-  line-height: 2 !important;
   transition: all 0.3s ease !important;
-  
-  /* 默认颜色 (如果没有命中下面的彩色规则) */
-  color: #49B1F5 !important; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* 3. 模拟图2的蓝色系文字颜色 (循环变色) */
-.tag-cloud-list a:nth-child(5n+1) { color: #2e86de !important; } /* 亮蓝 */
-.tag-cloud-list a:nth-child(5n+2) { color: #54a0ff !important; } /* 浅蓝 */
-.tag-cloud-list a:nth-child(5n+3) { color: #0abde3 !important; } /* 青蓝 */
-.tag-cloud-list a:nth-child(5n+4) { color: #5f27cd !important; } /* 紫蓝 */
-.tag-cloud-list a:nth-child(5n+5) { color: #222f3e !important; } /* 深蓝灰 */
-
-/* 4. 鼠标悬停放大效果 */
-.tag-cloud-list a:hover,
-#tag-cloud a:hover {
-  transform: scale(1.2) !important;
-  color: #ff7242 !important; /* 悬停变橙色 */
-  background-color: transparent !important;
-  text-decoration: none !important;
+/* 给现有标签分配不同的主题色 */
+#tag-cloud a[href*="Hexo"],
+.tag-cloud a[href*="Hexo"] {
+  background-color: #49B1F5 !important;
 }
+#tag-cloud a[href*="博客DIY"],
+.tag-cloud a[href*="博客DIY"] {
+  background-color: #FF7242 !important;
+}
+#tag-cloud a[href*="Butterfly主题"],
+.tag-cloud a[href*="Butterfly主题"] {
+  background-color: #00c4b6 !important;
+}
+
+/* 标签大小根据文章数变化（词云核心） */
+#tag-cloud a.tag-cloud-1,
+.tag-cloud a.tag-cloud-1 { font-size: 14px !important; }
+#tag-cloud a.tag-cloud-2,
+.tag-cloud a.tag-cloud-2 { font-size: 16px !important; }
+#tag-cloud a.tag-cloud-3,
+.tag-cloud a.tag-cloud-3 { font-size: 18px !important; }
+#tag-cloud a.tag-cloud-4,
+.tag-cloud a.tag-cloud-4 { font-size: 20px !important; }
+#tag-cloud a.tag-cloud-5,
+.tag-cloud a.tag-cloud-5 { font-size: 22px !important; }
+#tag-cloud a.tag-cloud-6,
+.tag-cloud a.tag-cloud-6 { font-size: 24px !important; }
+
+/* 标签hover效果 */
+#tag-cloud a:hover,
+.tag-cloud a:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  opacity: 0.9 !important;
+}
+
 /* ======================================
-   分类页面：终极精简版 (去圆圈 + 去括号)
+   分类页面：简洁列表风格（像第二张图）
    ====================================== */
-
-/* 1. 彻底移除左侧的所有图标/圆点 */
-.category-lists .category-list-item,
-.category-lists .category-list-item::before,
-.category-lists .category-list-link::before {
-  content: none !important;
-  display: flex !important; /* 保持 flex 布局 */
+.layout_page .category-list {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
   list-style: none !important;
 }
 
-/* 2. 优化单个分类行 */
-.category-lists .category-list-item {
+.layout_page .category-list-item {
+  display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
-  padding: 12px 15px !important; /* 增加左边距，弥补圆圈去掉后的空缺 */
-  margin-bottom: 0 !important;
+  padding: 18px 0 !important;
   border-bottom: 1px solid #eee !important;
-  transition: all 0.3s ease;
-}
-
-/* 3. 分类文字样式 */
-.category-lists .category-list-link {
-  font-weight: 700 !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
   color: #333 !important;
-  font-size: 1.1em !important;
-  text-decoration: none !important;
+  transition: all 0.3s ease !important;
 }
 
-/* 分类文字后的右箭头图标 */
-.category-lists .category-list-link::after {
-  content: '\f054' !important;
-  font-family: "Font Awesome 5 Free" !important;
-  font-weight: 900 !important;
-  margin-left: 8px !important;
-  font-size: 0.8em !important;
-  color: #bbb !important;
+/* 分类名称左侧的箭头图标 */
+.layout_page .category-list-item a::before {
+  content: "❯" !important;
+  margin-right: 12px !important;
+  color: #49B1F5 !important;
+  font-weight: bold !important;
 }
 
-/* 4. 右侧计数样式：核心去括号技巧 */
-.category-lists .category-list-count {
-  display: inline-flex !important;
-  align-items: center !important;
-  color: #999 !important;
-  position: relative !important;
-  
-  /* 魔法剪刀：clip-path */
-  /* 从右侧向内剪掉大约 0.55em 的宽度，正好切掉 ')' */
-  clip-path: inset(0 0.28em 0 0) !important;
-  margin-right: -0.55em !important; /* 抵消剪掉的物理宽度，防止右边留白 */
-  
-  background: none !important;
+/* 右侧的文章数量 */
+.layout_page .category-list-item .category-list-count {
+  font-size: 16px !important;
+  color: #666 !important;
+  background-color: rgba(240, 242, 245, 0.8) !important;
+  padding: 4px 12px !important;
+  border-radius: 16px !important;
 }
 
-/* 在计数值前添加“文档”图标 */
-.category-lists .category-list-count::before {
-  content: '\f15c' !important;
-  font-family: "Font Awesome 5 Free" !important;
-  font-weight: 400 !important;
-  margin-right: 5px !important;
-  font-size: 0.9em !important;
+/* hover效果 */
+.layout_page .category-list-item:hover {
+  background-color: rgba(248, 249, 250, 0.5) !important;
+  padding-left: 12px !important;
 }
 
-/* 5. 悬停效果：整行变色并轻微位移 */
-.category-lists .category-list-item:hover {
-  background-color: #f9f9f9 !important;
-  padding-left: 20px !important;
-}
-
-.category-lists .category-list-item:hover .category-list-link {
-  color: #005375 !important;
+.layout_page .category-list-item:hover a {
+  color: #49B1F5 !important;
 }
