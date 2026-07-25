@@ -6,7 +6,7 @@
 (async () => {
   // ========== 可配置项 ==========
   const CONFIG = {
-    interval: 5000,          // 自动切换间隔（毫秒）
+    interval: 10000,          // 自动切换间隔（毫秒）
     fadeDuration: 600,       // 淡入淡出时长（毫秒）
     dataUrl: '/data/verses.json',
     startIndex: 0,           // 首次访问从第几句开始（-1 = 随机）
