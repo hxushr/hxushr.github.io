@@ -1,221 +1,317 @@
-/* ========== 全局样式重置（确保自定义样式优先级最高） ========== */
+/* ========== 原有全局样式 ========== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ========== 顶栏字体调整 ========== */
-/* 顶栏大标题（站点名称） */
-.site-name {
-  font-size: 30px !important;
-  font-weight: 400 !important; /* 加粗标题，更醒目 */
-  line-height: 1.2 !important; /*行高适配，避免文字溢出 */
+/* 保留：文章页顶栏左侧标题样式 */
+#nav .site-name {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
 }
 
-/* 导航栏菜单文字 */
-#nav-menu a {
-  /* font-size: 25px !important; */
-  /* padding: 0 12px !important; 增加菜单间距，避免挤在一起 */
-  /* font-weight: 500 !important; */
-}
-
-/* 适配小屏幕（避免手机端字体过大） */
 @media (max-width: 768px) {
-  .site-name {
-    font-size: 32px !important;
+  #nav .site-name {
+    max-width: 58vw;
+    overflow: hidden;
+    font-size: 1.05rem !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+
   #nav-menu a {
     font-size: 18px !important;
   }
 }
 
-/* ========== 背景与卡片样式 ========== */
-/* 页面整体背景色（替换成你喜欢的颜色即可） */
+/* ========== 原有背景与卡片 ========== */
 #body-wrap {
-  background-color: #f0f2f5 !important; /* 浅灰色背景，柔和不刺眼 */
-  /* 可选：换成背景图片（取消注释即可，替换图片路径） */
-  background: url(/img/bg.jpg) no-repeat center center fixed !important;
+  background: url('/img/bg.jpg') no-repeat center center fixed !important;
+  background-color: #f0f2f5 !important;
   background-size: cover !important;
 }
 
-/* 文章卡片 + 侧边栏卡片样式 */
 .recent-post-item,
 .card-widget {
-  background-color: rgba(255, 255, 255, 0.85) !important; /* 半透明白色 */
-  border-radius: 12px !important; /* 圆润边角 */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important; /* 轻微阴影增加层次感 */
-  border: none !important; /* 去掉默认边框，更简洁 */
-  margin-bottom: 20px !important; /* 卡片间距 */
+  margin-bottom: 20px !important;
+  border: none !important;
+  border-radius: 12px !important;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* 卡片 hover 效果（可选，增加交互感） */
 .recent-post-item:hover,
 .card-widget:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
   transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
   transition: all 0.3s ease !important;
 }
 
-/* ========== 底栏彻底隐藏 ========== */
 #footer {
   display: none !important;
-  visibility: hidden !important; /* 双重保险，确保完全隐藏 */
+  visibility: hidden !important;
   height: 0 !important;
   padding: 0 !important;
 }
 
-/* ========== 其他优化（可选） ========== */
-/* 去掉页面默认内边距，让背景铺满 */
 #web_bg {
   background-color: transparent !important;
 }
 
-/* 滚动条美化（可选，和主题色匹配） */
 ::-webkit-scrollbar {
   width: 8px !important;
   height: 8px !important;
 }
+
 ::-webkit-scrollbar-thumb {
-  background-color: #efbcbd !important;
   border-radius: 4px !important;
+  background-color: #efbcbd !important;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #f0f2f5 !important;
 }
 
-/* 限制顶栏 Banner 的最大宽度并居中 */
 #page-header {
-  background-color: rgba(128, 128, 128, 0.6) !important; /* 半透明白色 */
-  /* max-height: 250px !important; 调整为你想要的高度，比如 200px 或 400px */
+  background-color: rgba(128, 128, 128, 0.6) !important;
 }
 
-/* 可选：让顶栏内部的文字也居中对齐 */
 #page-header .site-info {
   text-align: center !important;
 }
 
-/* ======================================
-   标签页面：词云风格 (修复版)
-   ====================================== */
-
-/* 1. 锁定标签容器 (同时覆盖多种可能的类名) */
+/* ========== 原有标签词云 ========== */
 .tag-cloud-list,
-#tag-cloud, 
+#tag-cloud,
 .page-tag #tag-cloud {
-  text-align: center !important;
   padding: 40px 10px !important;
+  text-align: center !important;
 }
 
-/* 2. 核心样式：强制去掉“按钮”背景，改为“纯文字” */
 .tag-cloud-list a,
 #tag-cloud a,
 .page-tag #tag-cloud a,
 .tag-cloud a {
   display: inline-block !important;
   margin: 0 10px !important;
-  padding: 0 !important;             /* 去掉内边距 */
-  border-radius: 0 !important;       /* 去掉圆角 */
-  background-color: transparent !important; /* 关键：去掉背景色 */
-  box-shadow: none !important;       /* 去掉阴影 */
-  border: none !important;           /* 去掉边框 */
-  
-  /* 字体设置 */
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #49b1f5 !important;
   font-weight: 500 !important;
-  text-decoration: none !important;
   line-height: 2 !important;
+  text-decoration: none !important;
   transition: all 0.3s ease !important;
-  
-  /* 默认颜色 (如果没有命中下面的彩色规则) */
-  color: #49B1F5 !important; 
 }
 
-/* 3. 模拟图2的蓝色系文字颜色 (循环变色) */
-.tag-cloud-list a:nth-child(5n+1) { color: #2e86de !important; } /* 亮蓝 */
-.tag-cloud-list a:nth-child(5n+2) { color: #54a0ff !important; } /* 浅蓝 */
-.tag-cloud-list a:nth-child(5n+3) { color: #0abde3 !important; } /* 青蓝 */
-.tag-cloud-list a:nth-child(5n+4) { color: #5f27cd !important; } /* 紫蓝 */
-.tag-cloud-list a:nth-child(5n+5) { color: #222f3e !important; } /* 深蓝灰 */
+.tag-cloud-list a:nth-child(5n + 1) { color: #2e86de !important; }
+.tag-cloud-list a:nth-child(5n + 2) { color: #54a0ff !important; }
+.tag-cloud-list a:nth-child(5n + 3) { color: #0abde3 !important; }
+.tag-cloud-list a:nth-child(5n + 4) { color: #5f27cd !important; }
+.tag-cloud-list a:nth-child(5n + 5) { color: #222f3e !important; }
 
-/* 4. 鼠标悬停放大效果 */
 .tag-cloud-list a:hover,
 #tag-cloud a:hover {
   transform: scale(1.2) !important;
-  color: #ff7242 !important; /* 悬停变橙色 */
   background-color: transparent !important;
+  color: #ff7242 !important;
   text-decoration: none !important;
 }
-/* ======================================
-   分类页面：终极精简版 (去圆圈 + 去括号)
-   ====================================== */
 
-/* 1. 彻底移除左侧的所有图标/圆点 */
+/* ========== 原有分类页 ========== */
 .category-lists .category-list-item,
 .category-lists .category-list-item::before,
 .category-lists .category-list-link::before {
+  display: flex !important;
   content: none !important;
-  display: flex !important; /* 保持 flex 布局 */
   list-style: none !important;
 }
 
-/* 2. 优化单个分类行 */
 .category-lists .category-list-item {
-  justify-content: space-between !important;
   align-items: center !important;
-  padding: 12px 15px !important; /* 增加左边距，弥补圆圈去掉后的空缺 */
+  justify-content: space-between !important;
   margin-bottom: 0 !important;
+  padding: 12px 15px !important;
   border-bottom: 1px solid #eee !important;
   transition: all 0.3s ease;
 }
 
-/* 3. 分类文字样式 */
 .category-lists .category-list-link {
-  font-weight: 700 !important;
   color: #333 !important;
   font-size: 1.1em !important;
+  font-weight: 700 !important;
   text-decoration: none !important;
 }
 
-/* 分类文字后的右箭头图标 */
 .category-lists .category-list-link::after {
-  content: '\f054' !important;
-  font-family: "Font Awesome 5 Free" !important;
-  font-weight: 900 !important;
   margin-left: 8px !important;
-  font-size: 0.8em !important;
   color: #bbb !important;
+  content: '\f054' !important;
+  font-family: 'Font Awesome 5 Free' !important;
+  font-size: 0.8em !important;
+  font-weight: 900 !important;
 }
 
-/* 4. 右侧计数样式：核心去括号技巧 */
 .category-lists .category-list-count {
+  position: relative !important;
   display: inline-flex !important;
   align-items: center !important;
-  color: #999 !important;
-  position: relative !important;
-  
-  /* 魔法剪刀：clip-path */
-  /* 从右侧向内剪掉大约 0.55em 的宽度，正好切掉 ')' */
+  margin-right: -0.55em !important;
   clip-path: inset(0 0.28em 0 0) !important;
-  margin-right: -0.55em !important; /* 抵消剪掉的物理宽度，防止右边留白 */
-  
   background: none !important;
+  color: #999 !important;
 }
 
-/* 在计数值前添加“文档”图标 */
 .category-lists .category-list-count::before {
-  content: '\f15c' !important;
-  font-family: "Font Awesome 5 Free" !important;
-  font-weight: 400 !important;
   margin-right: 5px !important;
+  content: '\f15c' !important;
+  font-family: 'Font Awesome 5 Free' !important;
   font-size: 0.9em !important;
+  font-weight: 400 !important;
 }
 
-/* 5. 悬停效果：整行变色并轻微位移 */
 .category-lists .category-list-item:hover {
-  background-color: #f9f9f9 !important;
   padding-left: 20px !important;
+  background-color: #f9f9f9 !important;
 }
 
 .category-lists .category-list-item:hover .category-list-link {
   color: #005375 !important;
+}
+
+/* ========== 独立搜索页 ========== */
+#menus .nav-search-link {
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.standalone-search-page {
+  min-height: 420px;
+}
+
+.standalone-search-description {
+  margin: 0 0 22px;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.standalone-search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 62px;
+  padding: 0 18px;
+  border: 2px solid #333;
+  border-radius: 16px;
+  background: rgba(238, 238, 238, 0.9);
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.standalone-search-box:focus-within {
+  border-color: #49b1f5;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(73, 177, 245, 0.12);
+}
+
+.standalone-search-box > .fa-search {
+  margin-right: 14px;
+  color: #555;
+  font-size: 1.15rem;
+}
+
+.standalone-search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #222;
+  font-size: 1.08rem;
+}
+
+.standalone-search-box input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.standalone-search-box button {
+  padding: 8px 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+}
+
+.standalone-search-box button:hover {
+  color: #49b1f5;
+}
+
+.standalone-search-summary {
+  margin: 30px 0 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+  font-weight: 600;
+}
+
+.standalone-search-result {
+  padding: 22px 4px;
+  border-bottom: 1px solid #ddd;
+}
+
+.standalone-search-result h2 {
+  margin: 0 0 10px !important;
+  font-size: 1.25rem !important;
+}
+
+.standalone-search-result p {
+  margin: 0;
+  color: #555;
+  line-height: 1.75;
+}
+
+.standalone-search-result mark {
+  padding: 0 2px;
+  border-radius: 2px;
+  background: #fff176;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  #menus .nav-search-link span {
+    display: none;
+  }
+
+  .standalone-search-box {
+    height: 54px;
+    padding: 0 13px;
+  }
+
+  .standalone-search-description {
+    font-size: 0.98rem;
+  }
+}
+
+[data-theme='dark'] .standalone-search-description,
+[data-theme='dark'] .standalone-search-summary,
+[data-theme='dark'] .standalone-search-result p {
+  color: #bbb;
+}
+
+[data-theme='dark'] .standalone-search-box {
+  border-color: #888;
+  background: rgba(35, 35, 35, 0.9);
+}
+
+[data-theme='dark'] .standalone-search-box:focus-within {
+  border-color: #49b1f5;
+  background: #1f1f1f;
+}
+
+[data-theme='dark'] .standalone-search-box input {
+  color: #eee;
 }

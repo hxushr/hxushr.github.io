@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2026/02/16/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>test1111</p>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建日志20260217</title>
+    <url>/2026/02/17/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%9720260217/</url>
+    <content><![CDATA[<h1 id="Hexo博客个性化DIY记录（2026-02-17）"><a href="#Hexo博客个性化DIY记录（2026-02-17）" class="headerlink" title="Hexo博客个性化DIY记录（2026.02.17）"></a>Hexo博客个性化DIY记录（2026.02.17）</h1><p>今天终于搞定了Hexo博客的个性化修改，从最开始的默认界面，一步步改成了自己喜欢的样子，过程中踩了个小坑（CSS不生效），特意记录下来，方便以后回顾，也给和我一样的新手避坑～</p>
+<h2 id="今日操作目标"><a href="#今日操作目标" class="headerlink" title="今日操作目标"></a>今日操作目标</h2><ol>
+<li>调大顶栏标题和导航菜单的字体，让顶栏更醒目；</li>
+<li>把文章卡片和侧边栏改成半透明样式，告别单调纯白；</li>
+<li>修改页面整体背景色，让半透明效果更突出；</li>
+<li>隐藏底部的底栏（Footer），让页面更简洁；</li>
+<li>解决之前自定义CSS不生效的问题，确保所有修改正常显示。</li>
+</ol>
+<h2 id="具体操作步骤（附踩坑点）"><a href="#具体操作步骤（附踩坑点）" class="headerlink" title="具体操作步骤（附踩坑点）"></a>具体操作步骤（附踩坑点）</h2><h3 id="一、准备工作：确认文件路径（关键！）"><a href="#一、准备工作：确认文件路径（关键！）" class="headerlink" title="一、准备工作：确认文件路径（关键！）"></a>一、准备工作：确认文件路径（关键！）</h3><p>之前写的自定义CSS一直不生效，后来发现是路径配置错了，正确步骤如下：</p>
+<ol>
+<li>在Hexo博客根目录（我的是 <code>D:\Blogs\hxushr2026</code>），找到 <code>source</code> 文件夹；</li>
+<li>在 <code>source</code> 里新建 <code>css</code> 文件夹，再在 <code>css</code> 里新建 <code>custom.css</code> 文件（所有自定义样式都写在这里）；</li>
+<li>打开Butterfly主题配置文件 <code>themes/butterfly/_config.yml</code>，找到 <code>inject</code> 配置，修改为：<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;link</span> <span class="string">rel=&quot;stylesheet&quot;</span> <span class="string">href=&quot;/css/custom.css&quot;&gt;</span></span><br></pre></td></tr></table></figure>
+这里重点：路径是 <code>/css/custom.css</code>，不是 <code>/source/css/xxx.css</code>（因为Hexo编译后会自动识别source为根目录）。</li>
+</ol>
+<h3 id="二、编写自定义CSS（核心操作）"><a href="#二、编写自定义CSS（核心操作）" class="headerlink" title="二、编写自定义CSS（核心操作）"></a>二、编写自定义CSS（核心操作）</h3><p>把以下代码复制到 <code>custom.css</code> 里，每一步都有注释，可直接复用、按需修改：</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* 1. 顶栏字体调整（标题+导航菜单） */</span></span><br><span class="line"><span class="selector-class">.site-name</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">50px</span> <span class="meta">!important</span>; <span class="comment">/* 顶栏大标题字体大小，我调的50px */</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">700</span> <span class="meta">!important</span>; <span class="comment">/* 标题加粗，更醒目 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#nav-menu</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">25px</span> <span class="meta">!important</span>; <span class="comment">/* 导航菜单字体大小，25px刚好 */</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">12px</span> <span class="meta">!important</span>; <span class="comment">/* 菜单之间增加间距，避免拥挤 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 适配手机端：避免小屏幕字体过大溢出 */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">max-width</span>: <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.site-name</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">32px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-id">#nav-menu</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span> <span class="meta">!important</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 2. 文章卡片+侧边栏 半透明样式 */</span></span><br><span class="line"><span class="selector-class">.recent-post-item</span>,</span><br><span class="line"><span class="selector-class">.card-widget</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>, <span class="number">0.8</span>) <span class="meta">!important</span>; <span class="comment">/* 半透明白色，0.8是透明度 */</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">12px</span> <span class="meta">!important</span>; <span class="comment">/* 卡片边角圆润，更美观 */</span></span><br><span class="line">  <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">4px</span> <span class="number">12px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.1</span>) <span class="meta">!important</span>; <span class="comment">/* 轻微阴影，增加层次感 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 3. 页面整体背景色修改 */</span></span><br><span class="line"><span class="selector-id">#body-wrap</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f0f2f5</span> <span class="meta">!important</span>; <span class="comment">/* 浅灰色背景，柔和不刺眼 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 4. 彻底隐藏底栏（Footer） */</span></span><br><span class="line"><span class="selector-id">#footer</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none <span class="meta">!important</span>;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden <span class="meta">!important</span>; <span class="comment">/* 双重保险，确保没有残留 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 可选：滚动条美化（和主题色匹配） */</span></span><br><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">8px</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#6f1716</span> <span class="meta">!important</span>; <span class="comment">/* 和主题主色调一致 */</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">4px</span> <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、生效修改（必做步骤）"><a href="#三、生效修改（必做步骤）" class="headerlink" title="三、生效修改（必做步骤）"></a>三、生效修改（必做步骤）</h3><p>所有配置和CSS写好后，一定要执行以下命令，清理缓存并重新生成页面，否则修改不生效：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+<p>执行完成后，打开浏览器访问 <code>http://localhost:4000</code>，按 <code>Ctrl+F5</code> 强制刷新（避免加载旧缓存），就能看到所有修改效果了。</p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><ol>
+<li>顶栏：标题变大加粗，导航菜单字体适中、间距合理，手机端会自动适配；</li>
+<li>卡片：文章卡片和侧边栏都是半透明白色，悬浮在浅灰色背景上，层次感拉满；</li>
+<li>背景：告别单调纯白，浅灰色背景柔和不刺眼，长时间看也不疲劳；</li>
+<li>底栏：完全隐藏，页面底部更简洁，没有多余元素。</li>
+</ol>
+<h2 id="今日踩坑总结"><a href="#今日踩坑总结" class="headerlink" title="今日踩坑总结"></a>今日踩坑总结</h2><p>最开始CSS不生效，核心原因是 <strong>路径配置错误</strong> —— 把 <code>inject</code> 里的CSS路径写成了 <code>/source/css/custom.css</code>，忽略了Hexo编译后会把source作为根目录，修改成 <code>/css/custom.css</code> 后就正常生效了。</p>
+<p>新手提醒：Hexo修改样式时，路径和YAML语法（冒号后加空格）一定要注意，否则很容易出现“修改了但不生效”的问题，改完后记得执行 <code>hexo clean</code> 清理缓存～</p>
+<h2 id="后续计划"><a href="#后续计划" class="headerlink" title="后续计划"></a>后续计划</h2><p>接下来打算继续优化博客，比如添加评论功能、阅读量统计，再换一张好看的首页banner图，慢慢把博客改成自己喜欢的样子✨</p>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
+<li>执行命令新建这篇博客：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new <span class="string">&quot;Hexo博客个性化DIY记录（2026.02.17）&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>打开生成的 <code>source/_posts/Hexo博客个性化DIY记录（2026.02.17）.md</code> 文件；</li>
+<li>把上面的代码<strong>全部复制</strong>，覆盖文件原有内容（包括开头的 <code>---</code> 部分）；</li>
+<li>可以按需修改：比如替换博客根目录路径、调整字体大小数值、修改背景色，也可以加上自己的截图（用 <code>![截图描述](/img/截图文件名.jpg)</code> 插入，截图放在 <code>source/img</code> 里）；</li>
+<li>执行 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code> 预览，确认无误后部署即可。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术笔记</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>博客DIY</tag>
+        <tag>Butterfly主题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo博客搭建踩坑记录</title>
+    <url>/2026/02/16/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<hr>
+<h1 id="文章头部配置（Front-matter），不要删"><a href="#文章头部配置（Front-matter），不要删" class="headerlink" title="文章头部配置（Front-matter），不要删"></a>文章头部配置（Front-matter），不要删</h1><h2 id="title-Hexo博客搭建踩坑记录date-2026-02-17-10-00-00-发布时间tags-Hexo-博客搭建-教程-标签，用逗号分隔categories-技术笔记-分类"><a href="#title-Hexo博客搭建踩坑记录date-2026-02-17-10-00-00-发布时间tags-Hexo-博客搭建-教程-标签，用逗号分隔categories-技术笔记-分类" class="headerlink" title="title: Hexo博客搭建踩坑记录date: 2026-02-17 10:00:00  # 发布时间tags: [Hexo, 博客搭建, 教程]  # 标签，用逗号分隔categories: 技术笔记  # 分类"></a>title: Hexo博客搭建踩坑记录<br>date: 2026-02-17 10:00:00  # 发布时间<br>tags: [Hexo, 博客搭建, 教程]  # 标签，用逗号分隔<br>categories: 技术笔记  # 分类</h2><h1 id="Hexo博客搭建踩坑记录"><a href="#Hexo博客搭建踩坑记录" class="headerlink" title="Hexo博客搭建踩坑记录"></a>Hexo博客搭建踩坑记录</h1><p>终于用 Hexo + Butterfly 搭好自己的博客了，记录一下遇到的问题～</p>
+<h2 id="一、遇到的第一个问题：No-layout-index-html"><a href="#一、遇到的第一个问题：No-layout-index-html" class="headerlink" title="一、遇到的第一个问题：No layout: index.html"></a>一、遇到的第一个问题：No layout: index.html</h2><p>原因是 Butterfly 主题的依赖没装全，重新安装 <code>hexo-renderer-pug</code> 和 <code>hexo-renderer-stylus</code> 就解决了。</p>
+<h2 id="二、SSH连接GitHub失败"><a href="#二、SSH连接GitHub失败" class="headerlink" title="二、SSH连接GitHub失败"></a>二、SSH连接GitHub失败</h2><p>后来发现是公钥没添加到 GitHub，按教程配置后就正常了。</p>
+<h3 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h3><ul>
+<li>修改配置后一定要执行 <code>hexo clean</code> 清理缓存；</li>
+<li>YAML 配置文件的 <code>:</code> 后必须加空格！</li>
+</ul>
+<blockquote>
+<p>引用块：分享一句喜欢的话——慢慢来，会更快。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>技术笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>图片文章模板示例</title>
+    <url>/2026/09/25/test/</url>
+    <content><![CDATA[<h1 id="图片文章模板"><a href="#图片文章模板" class="headerlink" title="图片文章模板"></a>图片文章模板</h1><p>这篇文章可以直接作为以后写博客时的参考。它的目录结构是：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">source/_posts/test/</span><br><span class="line">├── test.md</span><br><span class="line">├── cover.jpg</span><br><span class="line">└── article-image.jpg</span><br></pre></td></tr></table></figure>
+
+<h2 id="封面图片"><a href="#封面图片" class="headerlink" title="封面图片"></a>封面图片</h2><p>文章头部的这行配置会把 <code>cover.jpg</code> 设置为文章封面：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">cover:</span> <span class="string">cover.jpg</span></span><br></pre></td></tr></table></figure>
+
+<p>封面会出现在首页文章卡片、右侧最新文章和上一篇 &#x2F; 下一篇区域。</p>
+<h2 id="正文图片"><a href="#正文图片" class="headerlink" title="正文图片"></a>正文图片</h2><p>正文图片和 Markdown 放在同一目录后，使用普通 Markdown 语法即可：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">正文图片示例</span>](<span class="link">article-image.jpg</span>)</span><br></pre></td></tr></table></figure>
+
+<p>下面是实际渲染效果：</p>
+<p><img src="article-image.jpg" alt="正文图片示例"></p>
+<h2 id="无封面文章"><a href="#无封面文章" class="headerlink" title="无封面文章"></a>无封面文章</h2><p>如果不需要封面，删除 <code>cover</code> 这一行即可。这种文章会在首页以无图片的半透明卡片显示。</p>
+<h2 id="可复制的-front-matter"><a href="#可复制的-front-matter" class="headerlink" title="可复制的 front-matter"></a>可复制的 front-matter</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">文章标题</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2026-09-25 22:30:00</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">用一句话介绍文章。</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">技术笔记</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">标签1</span>, <span class="string">标签2</span>]</span><br><span class="line"><span class="attr">cover:</span> <span class="string">cover.jpg</span></span><br><span class="line"><span class="attr">top_img:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+      <tags>
+        <tag>模板</tag>
+        <tag>图片示例</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>开始</title>
+    <url>/2026/02/16/%E5%BC%80%E5%A7%8B/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>项目回忆至2026年7月25日</title>
+    <url>/2026/07/25/%E9%A1%B9%E7%9B%AE%E5%9B%9E%E5%BF%86%E8%87%B32026%E5%B9%B47%E6%9C%8825%E6%97%A5/</url>
+    <content><![CDATA[<h1 id="Research-Work-Experience"><a href="#Research-Work-Experience" class="headerlink" title="Research &amp; Work Experience"></a>Research &amp; Work Experience</h1><p>​	这一篇主要是今天看了<a href="https://shishouqian.cn/#Research">石守谦</a>老师的博客，深受启发，所以也仿照着将自己目前已经做过的项目先列出来，后续应该会逐渐更新，一些现在的玩具项目未来应该不再会展示，但考虑到养成一个良好的习惯，还是先列出来。</p>
+<h2 id="基于华为Atlas200DK与IMX6的海上船舶智能检测与监控系统-03-2026-05-2026"><a href="#基于华为Atlas200DK与IMX6的海上船舶智能检测与监控系统-03-2026-05-2026" class="headerlink" title="基于华为Atlas200DK与IMX6的海上船舶智能检测与监控系统(03,2026-05,2026)"></a>基于华为Atlas200DK与IMX6的海上船舶智能检测与监控系统(03,2026-05,2026)</h2><p>《嵌入式系统》课设，分数96，排名第2&#x2F;414</p>
+<p>​	面向复杂海洋环境下船舶目标检测过程中存在的边缘设备算力有限、多端数据同步困难以及实时性不足等问题，设计并实现了一套基于异构边缘计算平台的智能船舶检测与监控系统。</p>
+<p>​	作为<strong>项目负责人</strong>，负责系统整体架构设计与核心模块开发，构建“目标检测程序—守护进程—Qt&#x2F;Web客户端”的协同软件架构。针对传统检测程序直接输出结果导致数据更新不同步、视频帧延迟等问题，设计基于共享内存的数据同步机制，并开发独立守护进程负责检测结果管理、数据转发以及异常恢复，实现检测模块与显示端之间的高效实时通信。</p>
+<p>​	在算法部署方面，完成YOLOv5目标检测模型在华为Atlas200DK上的边缘部署，包括模型转换、运行环境配置、推理程序开发以及OpenCV交叉编译等工作，实现基于昇腾AI芯片的船舶目标实时检测。</p>
+<p>​	参与系统通信与数据管理模块设计，基于TCP与Unix Domain Socket实现模块间通信，结合SQLite完成用户信息、检测记录以及历史数据管理，并开发Qt客户端与Web端实现检测结果可视化展示。</p>
+<p>​	最终完成视频采集、目标检测、数据同步、结果存储以及多端展示的一体化系统部署，在资源受限边缘设备环境下实现稳定运行。</p>
+<h2 id="编译器前端模块设计与实现-05-2026-06-2026"><a href="#编译器前端模块设计与实现-05-2026-06-2026" class="headerlink" title="编译器前端模块设计与实现(05,2026-06,2026)"></a>编译器前端模块设计与实现(05,2026-06,2026)</h2><p>《编译原理》课程实验，独立完成，满分实验</p>
+<p>​	要求：设计并实现一个完整的类C语言编译器前端系统，包括词法分析、语法分析以及语义分析模块。</p>
+<p>​	在词法分析实验中，基于DFA自动机完成词法扫描器设计，实现关键字、标识符、常量、运算符以及分隔符的自动识别，并设计Token表、符号表以及错误信息表等数据结构，实现错误检测与恢复机制。实验中采用配置文件驱动方式解耦词法规则和分析程序，提高系统扩展性。</p>
+<p>​	在语法分析实验中，实现基于SLR(1)方法的自底向上语法分析器，包括文法加载、First集合与Follow集合计算、LR(0)项目集族构造、ACTION&#x2F;GOTO分析表生成以及移入-归约分析流程，并支持语法树自动构建。</p>
+<p>​	通过该实验深入理解编译器前端核心机制，包括有限自动机、LR分析算法以及语法制导翻译过程。最终实验成绩获得满分。</p>
+<h2 id="Java编程与计算智能课程设计-11-2025-12-2025"><a href="#Java编程与计算智能课程设计-11-2025-12-2025" class="headerlink" title="Java编程与计算智能课程设计(11,2025-12,2025)"></a>Java编程与计算智能课程设计(11,2025-12,2025)</h2><p>课程考核：本人选择、设计并实现了差分进化算法优化实验，教学班最高分</p>
+<p>​	围绕连续优化问题求解任务，设计并实现基于差分进化算法（Differential Evolution, DE）的智能优化系统，并与标准粒子群优化算法（PSO）进行性能对比分析。</p>
+<p>​	负责算法设计、程序实现以及实验分析工作。针对传统进化算法参数依赖较强的问题，引入自适应参数调整策略，通过动态调整变异因子F和交叉概率CR，提高算法搜索效率。同时设计局部扰动机制增强算法跳出局部最优能力。</p>
+<p>​	实验选取F1、F2测试函数，在不同变量维度下比较DE与PSO算法的运行时间、收敛速度以及优化精度。实验结果表明，差分进化算法在高维连续优化问题中具有更好的稳定性和搜索能力。</p>
+<h2 id="多视角多模态特征协同的海上船舶检测与定位系统-05-2025-08-2025"><a href="#多视角多模态特征协同的海上船舶检测与定位系统-05-2025-08-2025" class="headerlink" title="多视角多模态特征协同的海上船舶检测与定位系统(05,2025-08,2025)"></a>多视角多模态特征协同的海上船舶检测与定位系统(05,2025-08,2025)</h2><p>第十四届全国海洋航行器设计与制作大赛-c3智能感知赛道，项目核心成员，国家一等奖</p>
+<p>​	针对海上大雾、夜间等低能见度场景下单一光学传感器船舶检测漏检率高、目标尺度跨度大、缺乏三维空间定位能力的痛点，提出融合RGB视觉、热成像、激光雷达的三模态智能检测方案，基于YOLOX检测框架搭建<strong>“检测—融合—定位”三分支并行架构</strong>，实现全天候海上船舶目标识别、动态追踪与三维空间定位。</p>
+<p><strong>个人核心工作：</strong></p>
+<ul>
+<li>主导热成像（IR）目标检测模块开发：通过海况实验确定37℃最优温度阈值，将红外温度图转换为二值灰度图；采用两次扫描的连通域分析策略提取船舶热源区域与最小外接锚框，精准识别发动机、烟囱等高温特征，有效补全夜间、大雾场景下光学传感器的漏检目标，显著强化低能见度环境的目标召回能力。</li>
+<li>负责多传感器标定与跨模态信息融合：完成RGB摄像头、热成像仪与激光雷达的空间校准与画幅匹配，通过画幅比例缩放解决多设备成像视场差异问题；设计基于交并比（IOU）的目标关联决策逻辑，实现三模态检测结果的智能融合与一致性校验，恶劣天气场景下检测准确率提升30%以上。</li>
+</ul>
+<p>​	项目基于威海真实码头场景采集标注6700余张海况样本，实测静态检测精度达85.71%；系统整体融合ByteTrack多目标追踪算法与激光雷达三维点云解算能力，可输出目标实时运动轨迹与三维空间坐标，为船舶航行避障提供精准感知数据支撑。</p>
+<h2 id="企业资产数字化管理系统-05-2025-08-2025"><a href="#企业资产数字化管理系统-05-2025-08-2025" class="headerlink" title="企业资产数字化管理系统(05,2025-08,2025)"></a>企业资产数字化管理系统(05,2025-08,2025)</h2><p>某国企，Java后端实习生</p>
+<p>​	参与企业资产管理平台后端开发工作，面向企业资产生命周期管理需求，协助构建数字化资产管理系统。</p>
+<p>​	基于SpringBoot与MyBatis-Plus完成后端业务模块开发，参与资产入库、领用、维修、转移以及报废等核心流程设计，实现资产信息管理、业务状态流转以及接口交互功能。</p>
+<p>​	参与数据库设计（选用postgreSQL）、接口联调以及系统功能测试，积累企业级软件开发流程经验。</p>
+<h2 id="五子棋智能对战系统-06-2025-07-2025"><a href="#五子棋智能对战系统-06-2025-07-2025" class="headerlink" title="五子棋智能对战系统(06,2025-07,2025)"></a>五子棋智能对战系统(06,2025-07,2025)</h2><p>2025夏季学期课设，独立完成，分数90+</p>
+<p>​	独立完成基于 C++17 与 Qt 6.9 框架的五子棋对战系统全流程开发，采用 MVC 分层架构设计，实现人人对战、人机对战双游戏模式，完整覆盖棋盘绘制、鼠标落子交互、四方向胜负判定、多步悔棋撤销、游戏重置等核心功能，支持 Windows 与 Linux 跨平台运行。</p>
+<p>​	设计并实现核心算法体系：以二维数组存储 15×15 棋盘状态，基于栈结构实现落子历史记录与悔棋功能；采用深度优先搜索 (DFS) 实现五子连珠胜负判定；构建攻防双维度评分模型，通过统计每个空位 8 个方向的双方连子数与空位活度计算落子价值，AI 决策兼具进攻性与防御性，可与经典 Negamax 算法抗衡至 50 手以上，且在响应速度与内存占用上更具性能优势。</p>
+<p>​	遵循面向对象编程思想封装核心模块，实现人人对战与人机对战模块的代码复用，提升开发效率；定位并修复悔棋栈入栈时序错误等关键缺陷，完成功能、性能全维度测试验证，形成完整的问题分析、调试排错与效果验证的工程实践闭环。</p>
+<p>​	对比分析评分式 AI 与 Negamax+Alpha-Beta 剪枝算法的优劣，提出蒙特卡洛树搜索 (MCTS) 与 Negamax 融合的优化方案，明确了后续算法升级的技术路径与实现思路。</p>
+<h2 id="基于开源鸿蒙的Todo服务卡片开发-11-2023-11-2024"><a href="#基于开源鸿蒙的Todo服务卡片开发-11-2023-11-2024" class="headerlink" title="基于开源鸿蒙的Todo服务卡片开发(11,2023-11,2024)"></a>基于开源鸿蒙的Todo服务卡片开发(11,2023-11,2024)</h2><p>***工业大学，大一年度项目，项目负责人，结题被推荐为优秀项目</p>
+<p>​	针对鸿蒙生态现有 Todo 工具普遍聚焦个人任务管理、缺乏团队协同能力与桌面快捷交互的市场空白，带领 6 人团队基于 OpenHarmony 平台，采用 ArkTS 语言与 DevEco Studio 完成北向应用全流程开发，落地支持桌面服务卡片交互的团队任务管理系统。</p>
+<p>​	主导应用整体架构设计与核心模块开发，实现用户登录认证、个人 &#x2F; 团队双任务分区、任务全生命周期管理（增删改查）、个人中心等核心功能，拓展底部导航栏、截止时间模板、任务进度实时统计等体验优化能力，覆盖需求设计、编码实现、真机测试的完整开发流程。</p>
+<p>​	设计实现可交互桌面服务卡片，打通卡片与主应用的数据同步与页面跳转链路，支持用户无需启动应用即可快速查看任务状态，点击卡片直达对应功能界面，提升高频任务的操作效率。</p>
+<p>​	设计基于华为云数据库的多人实时数据同步方案，可支撑团队任务分配、权限管控与协同办公场景，填补了鸿蒙应用市场中团队协作类 Todo 工具的品类空白。</p>
+<p>​	面对 HarmonyOS Next（API 12+）版本迭代带来的系统 API 弃用、接口参数重构等兼容性问题，通过查阅官方开发者文档完成组件迁移与全量代码调试，系统性梳理跨版本适配的典型问题与解决路径，沉淀了鸿蒙应用版本迁移与工程排错的完整实践经验。</p>
+<p>​	项目最终完成全量功能开发、应用打包部署与真机兼容性测试，输出可安装的应用包，实现从任务管理到桌面快捷交互的完整产品功能闭环。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h2><p>​	以上就是我从2023年大学入学到2026年7月25日所完成的项目，感觉这种应该就在做项目的过程中写，一些关键的点应该提前写下来，<strong>工作日志</strong>，<strong>vlog</strong>，写成<strong>流水账</strong>也行；</p>
+<p>​	现在这样回过来写，很多细节都忘了，只能拿最后出的文档来看，当初具体为什么这么做：自己遇到具体问题的时候，怎么一步步解决的思路，最后作出的贡献，这些具体的都忘了。感觉还是有点遗憾的，</p>
+<p>​	不过这些练手的东西也还好，记不记影响没那么大。以后的项目，都会记录了，至少自己肯定会录下来了（不一定全发博客了），不论是什么样的形式。</p>
+<h2 id="记录方式"><a href="#记录方式" class="headerlink" title="记录方式"></a>记录方式</h2><p>​	大体就是工作日志类、git、log，视频流类、vlog、录屏，还有tips、流水账什么的：</p>
+<ol>
+<li>规范式 Git 提交日志</li>
+<li>踩坑排查手册（问题日志）</li>
+<li>技术实验记录</li>
+<li>每日三件事+阻塞项记录，甘特图</li>
+<li>个人贡献台账（STAR素材库）</li>
+<li>项目里程碑交付文档</li>
+<li>需求变更与技术决策记录</li>
+<li>模块设计文档&#x2F;技术方案</li>
+<li>技术复盘博客&#x2F;专栏</li>
+<li>个人工具&#x2F;代码片段库</li>
+<li>项目Wiki&#x2F;知识库</li>
+<li>功能演示录屏</li>
+<li>架构图&#x2F;流程图合集</li>
+<li>量化成果截图&#x2F;数据看板</li>
+<li>技术分享PPT与讲稿</li>
+<li>周&#x2F;月度复盘笔记</li>
+<li>项目终局复盘文档</li>
+<li>面试错题本</li>
+<li>会议个人纪要</li>
+<li>灵感&#x2F;思路便签</li>
+</ol>
+]]></content>
+      <categories>
+        <category>项目经历</category>
+      </categories>
+      <tags>
+        <tag>博客</tag>
+        <tag>项目</tag>
+        <tag>总结tips</tag>
+      </tags>
+  </entry>
+</search>
